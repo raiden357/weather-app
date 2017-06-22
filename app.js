@@ -1,30 +1,28 @@
-function weather(){
-	var location = document.getElementById("location");
-	var apiKey = '1edc64f8ef43d38f694faddf91506e66';
-	var url = 'https://api.forecast.io/forecast/';
+function weather() {
 
-	navigator.geolocation.getCurrentPosition(success, error);
+    var location = document.getElementById("location");
+    var apiKey = 'INSERT API KEY'; 
+    var url = 'https://api.forecast.io/forecast/';
 
-	function success(position){
-	  latitude = position.coords.latitude;
-	  longitude = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition(success, error);
 
-	  location.innerHTML = 'Latitude is ' + latitude + '° Longitude is ' + longitude + '°');
+    function success(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
 
-	  $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data){
-	    $('#temp').html(data.currently.temperature + '° F');
-	    $('#minutely').html(data.minutely.summary);
-	  });
+      location.innerHTML = 'Latitude is ' + latitude + '° Longitude is ' + longitude + '°';
 
-	}
+       $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data) {
+        $('#temp').html(data.currently.temperature + '° F');
+        $('#minutely').html(data.minutely.summary);
+      });
+    }
 
-	function error(){
-	  location.innerHTML = "Unable to retrieve your location";
-	}
+    function error() {
+      location.innerHTML = "Unable to retrieve your location";
+    }
 
-	location.innerHTML = "Locating...";
+    location.innerHTML = "Locating...";
+  }
 
-}
-
-weather();
-
+  weather();
