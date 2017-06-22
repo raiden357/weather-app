@@ -1,7 +1,7 @@
 function weather() {
 
     var location = document.getElementById("location");
-    var apiKey = 'INSERT API KEY'; 
+    var apiKey = '1edc64f8ef43d38f694faddf91506e66'; 
     var url = 'https://api.forecast.io/forecast/';
 
     navigator.geolocation.getCurrentPosition(success, error);
